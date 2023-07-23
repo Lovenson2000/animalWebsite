@@ -6,9 +6,9 @@ module.exports = {
       'sm1': '320px', //Iphone 8
       'sm2': '375px',
       'sm3': '414px',  //Iphone 8 plus
-      'md1': '400px',
-      'md': '750px',
-      'lg1': '1020px',
+      'md1': '500px',
+      'md': '827px',
+      'lg1': '1220px',
       'lg': '1440px',
     },
     extend: {

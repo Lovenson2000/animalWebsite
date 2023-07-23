@@ -10,16 +10,15 @@ const navContainer = document.querySelectorAll("#header-container div");
 
 navContainer.forEach((item) => {
     item.addEventListener("click", (e) => {
-        // Check if the actual div is clicked (ignore clicks on child elements)
+        
+        //Changing background color
         if (e.target === e.currentTarget || e.target.tagName === "IMG" || e.target.tagName === "H3") {
-    
             navContainer.forEach((others) => {
                 others.style.backgroundColor = "transparent";
             });
-
             item.style.backgroundColor = "#fed7aa";
-            let target = e.target;
 
+            let target = e.target;
             // showing the corresponding items based on the clicked button
             if (target.id === "nav-dog") {
                 showItems(dogs);
@@ -36,6 +35,12 @@ navContainer.forEach((item) => {
                 hideItems(dogs);
                 hideItems(cats);
                 numberOfPets.innerHTML = `(${pigs.length})`;
+            }
+            else if (target.id === "nav-all") {
+                showItems(pigs);
+                showItems(dogs);
+                showItems(cats);
+                numberOfPets.innerHTML = `(${animalContainer.childElementCount})`;
             }
         }
     });
