@@ -7,7 +7,8 @@ module.exports = {
       'sm2': '375px',
       'sm3': '414px',  //Iphone 8 plus
       'md1': '500px',
-      'md': '827px',
+      'md': '830px',
+      'lg0': '940px',
       'lg1': '1220px',
       'lg': '1440px',
     },
