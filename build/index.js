@@ -4,18 +4,22 @@ const pigs = document.querySelectorAll("#animal-pig");
 
 let numberOfPets = document.querySelector("#number");
 let animalContainer = document.getElementById("animals-container");
-numberOfPets.innerHTML = `(${animalContainer.childElementCount})`; //Updating the number dynamically
+numberOfPets.innerHTML = `(${animalContainer.childElementCount})`; // Updating the number dynamically
 
-const navItems = document.querySelectorAll("#header-container div");
+const navContainer = document.querySelectorAll("#header-container div");
 
-function changeBackgrounColor() {
-    navItems.forEach((item) => {
-        item.addEventListener("click", (e) => {
-            e.preventDefault();
+navContainer.forEach((item) => {
+    item.addEventListener("click", (e) => {
+        
+        //Changing background color
+        if (e.target === e.currentTarget || e.target.tagName === "IMG" || e.target.tagName === "H3") {
+            navContainer.forEach((others) => {
+                others.style.backgroundColor = "transparent";
+            });
+            item.style.backgroundColor = "#fed7aa";
+
             let target = e.target;
-            console.log(target.style.display);
-
-            // Calling the showItems and hideItems functions to display and hide the corresponding items
+            // showing the corresponding items based on the clicked button
             if (target.id === "nav-dog") {
                 showItems(dogs);
                 hideItems(cats);
@@ -26,26 +30,23 @@ function changeBackgrounColor() {
                 hideItems(dogs);
                 hideItems(pigs);
                 numberOfPets.innerHTML = `(${cats.length})`;
-                
             } else if (target.id === "nav-pig") {
                 showItems(pigs);
                 hideItems(dogs);
                 hideItems(cats);
                 numberOfPets.innerHTML = `(${pigs.length})`;
             }
-
-            // Remove background color from other items
-            navItems.forEach((others) => {
-                others.style.backgroundColor = "transparent";
-            });
-
-            // Adding background to the clicked element
-            item.style.backgroundColor = "#fed7aa";
-        });
+            else if (target.id === "nav-all") {
+                showItems(pigs);
+                showItems(dogs);
+                showItems(cats);
+                numberOfPets.innerHTML = `(${animalContainer.childElementCount})`;
+            }
+        }
     });
-}
+});
 
-//Showing clicked item function
+// Showing clicked item function
 function showItems(items) {
     items.forEach((item) => {
         item.style.display = "block";
@@ -56,12 +57,5 @@ function showItems(items) {
 function hideItems(items) {
     items.forEach((item) => {
         item.style.display = "none";
-    })
+    });
 }
-
-changeBackgrounColor();
-
-
-
-
-
